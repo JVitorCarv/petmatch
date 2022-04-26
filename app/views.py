@@ -10,3 +10,6 @@ def login(request):
 
 def register(request):
     return render(request, 'app/pages/register.html')
+
+def feed(request):
+    return render(request, 'app/pages/feed.html')
