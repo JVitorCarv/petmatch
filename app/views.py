@@ -7,3 +7,6 @@ def home(request):
 
 def login(request):
     return render(request, 'app/pages/login.html')
+
+def register(request):
+    return render(request, 'app/pages/register.html')
