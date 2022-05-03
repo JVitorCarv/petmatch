@@ -25,5 +25,5 @@ urlpatterns = [
     path('login/', views.login),
     path('register/', views.register),
     path('feed/', views.feed),
-    path('profile/', views.profile),
+    path('profile/<int:id>/', views.profile),
 ]

@@ -14,5 +14,5 @@ def register(request):
 def feed(request):
     return render(request, 'app/pages/feed.html')
 
-def profile(request):
+def profile(request, id):
     return render(request, 'app/pages/profile.html')
