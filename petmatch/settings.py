@@ -40,10 +40,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'app',
     'django.contrib.sites',
-    #3 app
+    #3rd party
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'crispy_forms',
     # local
     'pages.apps.PagesConfig',
 ]
@@ -131,6 +132,8 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# django-allauth
+
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
@@ -138,3 +141,8 @@ AUTHENTICATION_BACKENDS = [
 
 SITE_ID = 1
 LOGIN_REDIRECT_URL = "/"
+ACCOUNT_SESSION_REMEMBER = True
+
+# django-crispy-forms
+
+CRISPY_TEMPLATE_PACK = "bootstrap4"
