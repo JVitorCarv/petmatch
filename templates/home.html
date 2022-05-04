@@ -5,7 +5,8 @@
 {% block content %}
 {% if user.is_authenticated %}
 <div class="col-8 m-auto pt-2 pb-2 text-center">
-    <h1>Welcome back!</h1>
+    {% load account %}
+    <h1>Welcome back, {% user_display user %}!</h1>
 </div>
 {% else %}
 <div class="col-8 m-auto pt-2 pb-2 text-center">
