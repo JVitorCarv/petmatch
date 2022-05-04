@@ -3,6 +3,11 @@
 {% block title %}PetMatch{% endblock %}
 
 {% block content %}
+{% if user.is_authenticated %}
+<div class="col-8 m-auto pt-2 pb-2 text-center">
+    <h1>Welcome back!</h1>
+</div>
+{% else %}
 <div class="col-8 m-auto pt-2 pb-2 text-center">
     <h1>PetMatch</h1>
     <h3 class="text-muted"> Just as people need connections, so do our pets</h3>
@@ -13,4 +18,5 @@
     <a href="accounts/login/" class="btn btn-info btn-dark" role="button">Login</a>
     <a href="accounts/signup/" class="btn btn-info btn-light" role="button">Register</a>
 </div>
+{% endif %}
 {% endblock %}
