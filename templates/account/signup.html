@@ -2,13 +2,13 @@
 
 {% load crispy_forms_tags %}
 
-{% block title %}Cadastro{% endblock %}
+{% block title %}Sign Up{% endblock %}
 
 {% block content %}
-    <h2>Cadastro</h2>
+    <h2>Sign Up</h2>
     <form method="post">
         {% csrf_token %}
         {{ form|crispy }}
-        <button class="btn btn-success" type="submit">Cadastrar</button>
+        <button class="btn btn-success" type="submit">Sign Up</button>
     </form>
 {% endblock %}
