@@ -1,4 +1,4 @@
-from django.db import models
+'''from django.db import models
 from django.contrib.auth.models import User, AbstractBaseUser
 
 # Create your models here.
@@ -9,4 +9,4 @@ class AbstractUser(AbstractBaseUser):
     email = models.EmailField(blank=True)
     is_staff = models.BooleanField()
     is_active = models.BooleanField()
-    date_joined = models.DateTimeField()
+    date_joined = models.DateTimeField()'''

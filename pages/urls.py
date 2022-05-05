@@ -6,5 +6,7 @@ app_name = "pages"
 
 urlpatterns = [
     path("", views.HomePageView.as_view(), name="home"),
-    path("accounts/email/", views.EmailPageView.as_view(), name="email")
+    
+    path("accounts/email/", views.EmailPageView.as_view(), name="email"),
+    #path("accounts/signup/", views.register_request, name="register"),
 ]
