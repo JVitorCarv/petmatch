@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}{{User.username}}{% endblock %}
+
+{% block content %}
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'account_email' %}">Change email</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'addPet' %}">Add Pet</a>
+    </li>
+    <h1>{{User.username}} profile</h1>
+    <h2>{{User.first_name}} </h2>
+    <h2>{{User.last_name}} </h2>
+    <h2>{{User.email}}</h2>
+{% endblock %}

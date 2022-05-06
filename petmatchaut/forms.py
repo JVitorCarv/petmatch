@@ -3,6 +3,7 @@ from allauth.account.forms import SignupForm
 from django import forms
 from django.forms import ModelForm
 from petmatchaut.models import pet_perfil
+from django.contrib.auth.forms import UserCreationForm
 
 class petPerfilForm(ModelForm):
      class Meta:
@@ -20,3 +21,5 @@ class CustomSignupForm(SignupForm):
         user.save()
         return user
 
+
+    

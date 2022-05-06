@@ -17,7 +17,7 @@ from tkinter.font import names
 from tkinter.tix import Form
 from django.contrib import admin
 from django.urls import include, path
-from petmatchaut.views import insert, form, saveData
+from petmatchaut.views import HomeView, insert, form, saveData, addPet, Profile
 
 urlpatterns = [
     
@@ -26,5 +26,8 @@ urlpatterns = [
     path("", include("pages.urls", namespace="pages")),
     path("form/", form, name='form'),
     path("insert/", insert, name='insert'),
-    path("saveData/", saveData, name='saveData')
+    path("saveData/", saveData, name='saveData'),
+    path("add_pet/", addPet.as_view(), name='add_pet'),
+    path("profile/", Profile.as_view(), name='profile'),
+    path("home/", HomeView.as_view(), name='home')
 ]
