@@ -14,12 +14,17 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from tkinter.font import names
+from tkinter.tix import Form
 from django.contrib import admin
 from django.urls import include, path
+from petmatchaut.views import insert, form, saveData
 
 urlpatterns = [
     
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
     path("", include("pages.urls", namespace="pages")),
+    path("form/", form, name='form'),
+    path("insert/", insert, name='insert'),
+    path("saveData/", saveData, name='saveData')
 ]
