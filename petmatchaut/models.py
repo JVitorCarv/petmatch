@@ -1,3 +1,4 @@
+from tkinter.tix import Tree
 from django.db import models
 from django.contrib.auth.models import User, AbstractBaseUser
 from django.dispatch import receiver
@@ -11,7 +12,7 @@ class ProfileInfo(AbstractBaseUser):
     date_joined = models.DateTimeField()
 
 class pet_perfil(models.Model):
-    #user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     pet_name = models.CharField(max_length=30)
     race = models.CharField(max_length=30)
     pet_age = models.CharField(max_length=3)
@@ -23,8 +24,9 @@ class pet_perfil(models.Model):
         if created:
             pet_perfil.objects.create(user=instance)
 
-
+    '''
     @receiver(post_save, sender=User)
     def salvar_perfil(sender, instance, **kwargs):
-        instance.perfil.save()
+        instance.save()
+    '''
         
