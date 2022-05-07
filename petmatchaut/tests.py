@@ -10,7 +10,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 class TestHome(LiveServerTestCase):
     def test(self):
         options = webdriver.ChromeOptions()
-
+        options.add_argument('headless')
         driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
         driver.get('http://127.0.0.1:8000/')
@@ -23,7 +23,7 @@ class TestSignup(LiveServerTestCase):
     def testSignup(self):
         options = webdriver.ChromeOptions()
         driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
-
+        options.add_argument('headless')
         driver.get('http://127.0.0.1:8000/accounts/signup/')
 
         email = driver.find_element_by_id('id_email')
