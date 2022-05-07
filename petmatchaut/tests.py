@@ -44,6 +44,7 @@ class TestSignup(LiveServerTestCase):
         driver.find_element_by_class_name("btn-success").click()
         Thread(sleep(5))
         
+        driver.close()
         
         
         
