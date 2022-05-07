@@ -3,8 +3,8 @@
 {% load crispy_forms_tags %}
 
 {% block title %}Add Pet{% endblock %}
-
 {% block content %}
+{% if user.is_authenticated %}
 <h1>Add a pet...</h1>
 <form method = "POST" enctype="multipart/form-data">
     {% csrf_token %}
@@ -16,5 +16,9 @@
     document.getElementById("owner").value = name;
 
 </script>
-    
+
+{% else %}
+You can not add a pet without being authorized
+
+{% endif %} 
 {% endblock %}
