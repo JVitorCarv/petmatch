@@ -19,10 +19,10 @@ class ProfileInfo(AbstractBaseUser):
 
 class pet_perfil(models.Model):
     pet_owner = models.ForeignKey(User, on_delete=models.CASCADE)
-    pet_name = models.CharField(max_length=30, default="your pet name")
+    pet_name = models.CharField(max_length=30)
     race = models.CharField(max_length=30)
     pet_age = models.CharField(max_length=3)
-    pet_image = models.ImageField(default="default.jpg", upload_to="pet_pics")
+    pet_image = models.ImageField(default="default.jpg", upload_to="pet_pics/")
     
     def __str__(self):
         return self.pet_name + '|' + str(self.owner)

@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 
-{% load crispy_forms_tags %}
+{% load static %}
 
-{% block title %}{{User.username}}{% endblock %}
+{% block title %}{% endblock %}
 
 {% block content %}
 <h1><span id="owner"></span> Profile page</h1>
@@ -10,7 +10,7 @@
 <ul>
     {% for pets in object_list %}
         <li>{{ pets.pet_name }} - {{ pets.race }}<br/>
-            {{ pets.pet_image }}
+            <img "{{ pets.pet_image.url }}" width="250" height="250">
         </li>
     {% endfor %}
 </ul>

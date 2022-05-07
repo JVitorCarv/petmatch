@@ -15,9 +15,12 @@ Including another URLconf
 """
 from tkinter.font import names
 from tkinter.tix import Form
+from xml.dom.minidom import Document
+from django.conf import settings
 from django.contrib import admin
 from django.urls import include, path
 from petmatchaut.views import HomeView, insert, form, saveData, addPet, Profile
+from django.conf.urls.static import static
 
 urlpatterns = [
     
@@ -30,4 +33,4 @@ urlpatterns = [
     path("add_pet/", addPet.as_view(), name='add_pet'),
     path("profile/", Profile.as_view(), name='profile'),
     path("home/", HomeView.as_view(), name='home')
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
