@@ -18,7 +18,7 @@ class ProfileInfo(AbstractBaseUser):
 '''
 
 class pet_perfil(models.Model):
-    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    pet_owner = models.ForeignKey(User, on_delete=models.CASCADE)
     pet_name = models.CharField(max_length=30, default="your pet name")
     race = models.CharField(max_length=30)
     pet_age = models.CharField(max_length=3)

@@ -1,3 +1,5 @@
+from logging import PlaceHolder
+from tkinter import Widget
 from urllib import request
 from allauth.account.forms import SignupForm
 from django import forms
@@ -8,7 +10,15 @@ from django.contrib.auth.forms import UserCreationForm
 class petPerfilForm(ModelForm):
      class Meta:
          model = pet_perfil
-         fields = ['pet_name', 'race', 'pet_age']
+         fields = ['pet_name', 'race', 'pet_age', 'pet_image', 'pet_owner']
+
+         widgets = {
+             'pet_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Your pet name!'}),
+             'race': forms.TextInput(attrs={'class': 'form-control'}),
+             'pet_age': forms.NumberInput(attrs={'class': 'form-control'}),
+             'pet_image': forms.FileInput(attrs={'class': 'form-control'}),
+             'pet_owner': forms.TextInput(attrs={'class': 'form-control', 'value':'', 'id':'owner', 'type':'hidden'}),
+         }
 
 class CustomSignupForm(SignupForm):
     first_name = forms.CharField(max_length=30, label='First name')
