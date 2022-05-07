@@ -7,12 +7,30 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver import ActionChains
 import os
 
+options = Options()
+options.binary_location = "C:\path\to\chrome.exe"    #chrome binary location specified here
+options.add_argument("--start-maximized") #open Browser in maximized mode
+options.add_argument("--no-sandbox") #bypass OS security model
+options.add_argument("--disable-dev-shm-usage") #overcome limited resource problems
+options.add_experimental_option("excludeSwitches", ["enable-automation"])
+options.add_experimental_option('useAutomationExtension', False)
+driver = webdriver.Chrome(options=options, executable_path=r'C:\path\to\chromedriver.exe')
+driver.get()
+
 class TestHome(LiveServerTestCase):
     def test(self):
-        options = webdriver.ChromeOptions() 
-        options.add_experimental_option("excludeSwitches", ["enable-logging"])
-        driver = webdriver.Chrome(options=options)
+        #options = webdriver.ChromeOptions() 
+        #options.add_experimental_option("excludeSwitches", ["enable-logging"])
+        #driver = webdriver.Chrome(options=options)
         #driver = webdriver.Chrome()
+        options = Options()
+        options.binary_location = "C:\path\to\chrome.exe"    #chrome binary location specified here
+        options.add_argument("--start-maximized") #open Browser in maximized mode
+        options.add_argument("--no-sandbox") #bypass OS security model
+        options.add_argument("--disable-dev-shm-usage") #overcome limited resource problems
+        options.add_experimental_option("excludeSwitches", ["enable-automation"])
+        options.add_experimental_option('useAutomationExtension', False)
+        driver = webdriver.Chrome(options=options, executable_path=r'C:\path\to\chromedriver.exe')
         driver.get('http://127.0.0.1:8000/')
 
         assert "PetMatch" in driver.title
@@ -21,7 +39,14 @@ class TestHome(LiveServerTestCase):
 
 class TestSignup(LiveServerTestCase):
     def testSignup(self):
-        signup = webdriver.Chrome()
+        options = Options()
+        options.binary_location = "C:\path\to\chrome.exe"    #chrome binary location specified here
+        options.add_argument("--start-maximized") #open Browser in maximized mode
+        options.add_argument("--no-sandbox") #bypass OS security model
+        options.add_argument("--disable-dev-shm-usage") #overcome limited resource problems
+        options.add_experimental_option("excludeSwitches", ["enable-automation"])
+        options.add_experimental_option('useAutomationExtension', False)
+        signup = webdriver.Chrome(options=options, executable_path=r'C:\path\to\chromedriver.exe')
         signup.get('http://127.0.0.1:8000/accounts/signup/')
 
         email = signup.find_element_by_id('id_email')
