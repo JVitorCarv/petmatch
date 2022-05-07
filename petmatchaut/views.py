@@ -1,12 +1,14 @@
 from dataclasses import fields
 import profile
+from sre_constants import SUCCESS
 from django.shortcuts import redirect, render
+from django.urls import reverse_lazy
 from requests import post
+from django.views.generic.detail import SingleObjectMixin
 from petmatchaut.models import pet_perfil
 from petmatchaut.forms import petPerfilForm
 from django.views.generic import CreateView, DetailView, ListView, TemplateView
 from django.contrib.auth.models import User
-from .forms import petPerfilForm
 
 def insert(request):
     form = petPerfilForm(request.POST)
@@ -29,14 +31,17 @@ def saveData(request):
 
     return render(request, 'home.html', data)
    
-class Profile(TemplateView):
+class Profile(ListView):
+    model = pet_perfil
     template_name = 'account/profile.html'
+
 
 
 class addPet(CreateView):
     model = pet_perfil
     form_class = petPerfilForm
     template_name = 'account/add_pet.html'
+    success_url = reverse_lazy('profile')
 
 
 

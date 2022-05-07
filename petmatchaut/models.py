@@ -28,6 +28,7 @@ class pet_perfil(models.Model):
         return self.pet_name + '|' + str(self.owner)
 
     def get_absolute_url(self):
+        owner = self.pet_owner
         return reverse("profile")
     
 '''

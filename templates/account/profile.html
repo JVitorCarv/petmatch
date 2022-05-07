@@ -5,10 +5,20 @@
 {% block title %}{{User.username}}{% endblock %}
 
 {% block content %}
-<h1>Profile page</h1>
+<h1><span id="owner"></span> Profile page</h1>
 <h2>Pets:</h2>
 <ul>
-    
-</ul>    
+    {% for pets in object_list %}
+        <li>{{ pets.pet_name }} - {{ pets.race }}<br/>
+            {{ pets.pet_image }}
+        </li>
+    {% endfor %}
+</ul>
+
+<script>
+    var owner = "{{ user.username }}";
+    document.getElementById("owner").innerHTML = owner;
+
+</script>
     
 {% endblock %}
