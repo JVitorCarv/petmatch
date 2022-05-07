@@ -1,18 +1,18 @@
 from threading import Thread
 from time import sleep
-from webbrowser import Chrome
 from django.test import LiveServerTestCase
 from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver import ActionChains
 import os
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+
 
 class TestHome(LiveServerTestCase):
     def test(self):
-        options = webdriver.ChromeOptions() 
-        options.add_experimental_option("excludeSwitches", ["enable-logging"])
-        driver = webdriver.Chrome(options=options)
-        #driver = webdriver.Chrome()
+        options = webdriver.ChromeOptions()
+
+        driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+
         driver.get('http://127.0.0.1:8000/')
 
         assert "PetMatch" in driver.title
@@ -21,15 +21,17 @@ class TestHome(LiveServerTestCase):
 
 class TestSignup(LiveServerTestCase):
     def testSignup(self):
-        signup = webdriver.Chrome()
-        signup.get('http://127.0.0.1:8000/accounts/signup/')
+        options = webdriver.ChromeOptions()
+        driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
-        email = signup.find_element_by_id('id_email')
-        username = signup.find_element_by_id('id_username')
-        first_name = signup.find_element_by_id('id_first_name')
-        last_name = signup.find_element_by_id('id_last_name')
-        password = signup.find_element_by_id('id_password1')
-        password_confirm = signup.find_element_by_id('id_password2')
+        driver.get('http://127.0.0.1:8000/accounts/signup/')
+
+        email = driver.find_element_by_id('id_email')
+        username = driver.find_element_by_id('id_username')
+        first_name = driver.find_element_by_id('id_first_name')
+        last_name = driver.find_element_by_id('id_last_name')
+        password = driver.find_element_by_id('id_password1')
+        password_confirm = driver.find_element_by_id('id_password2')
         
         #populate the form with data
         email.send_keys('selenium.test@gmail.com')
@@ -39,7 +41,7 @@ class TestSignup(LiveServerTestCase):
         password.send_keys('momentanio')
         password_confirm.send_keys('momentanio')
 
-        signup.find_element_by_class_name("btn-success").click()
+        driver.find_element_by_class_name("btn-success").click()
         Thread(sleep(5))
         
         
